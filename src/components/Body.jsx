@@ -2,31 +2,32 @@ import { useEffect, useState } from "react";
 import resList from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { SWIGGY_RESTAURSNT } from "../utils/Constants";
 
 function Body() {
   const [searchText, setSearchText] = useState("");
-  const [listOfResturant, setListOfResturant] = useState(resList);
-  const [filteredRestaurants, setFilteredRestaurants] = useState(resList);
+  const [listOfResturant, setListOfResturant] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+
+  //mock data  resList
 
   // fetching Swiggy restaurant data
-  // const fetchData = async () => {
-  //   const data = await fetch(
-  //     "dapi/restaurants/list/v5?lat=28.6304203&lng=77.21772159999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-  //   );
-  //   const json = await data.json();
-  //   console.log(json);
+  const fetchData = async () => {
+    const data = await fetch(SWIGGY_RESTAURSNT);
+    const restaurantData = await data.json();
+    console.log(restaurantData);
 
-  //   const restaurantData =
-  //     json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-  //       ?.restaurants;
+    // const restaurantData =
+    //   json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+    //     ?.restaurants;
 
-  //   setListOfResturant(restaurantData);
-  //   setFilteredRestaurants(restaurantData);
-  // };
+    setListOfResturant(restaurantData);
+    setFilteredRestaurants(restaurantData);
+  };
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   // Handle search
   const handleSearch = () => {
