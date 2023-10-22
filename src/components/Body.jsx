@@ -5,32 +5,28 @@ import Shimmer from "./Shimmer";
 
 function Body() {
   const [searchText, setSearchText] = useState("");
-  const [listOfResturant, setListOfResturant] = useState([]);
-  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [listOfResturant, setListOfResturant] = useState(resList);
+  const [filteredRestaurants, setFilteredRestaurants] = useState(resList);
 
   // fetching Swiggy restaurant data
-  const fetchData = async () => {
-    try {
-      const response = await fetch("/api/restaurant-proxy'"); // Make the request to your proxy API route
+  // const fetchData = async () => {
+  //   const data = await fetch(
+  //     "dapi/restaurants/list/v5?lat=28.6304203&lng=77.21772159999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+  //   );
+  //   const json = await data.json();
+  //   console.log(json);
 
-      if (response.ok) {
-        const restaurantData = await response.json();
+  //   const restaurantData =
+  //     json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+  //       ?.restaurants;
 
-        setListOfResturant(restaurantData);
-        setFilteredRestaurants(restaurantData);
-      } else {
-        // Handle errors, such as if the response is not OK
-        console.error("Failed to fetch restaurant data");
-      }
-    } catch (error) {
-      // Handle other errors, such as network issues
-      console.error("An error occurred while fetching restaurant data", error);
-    }
-  };
+  //   setListOfResturant(restaurantData);
+  //   setFilteredRestaurants(restaurantData);
+  // };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   // Handle search
   const handleSearch = () => {
