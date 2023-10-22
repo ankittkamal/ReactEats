@@ -10,13 +10,22 @@ function Body() {
 
   // fetching Swiggy restaurant data
   const fetchData = async () => {
-    const data = await fetch("../../api/restaurant-proxy.js");
+    try {
+      const response = await fetch("/api/restaurant-proxy'"); // Make the request to your proxy API route
 
-    const restaurantData = await data.json();
-    //  console.log(json);
+      if (response.ok) {
+        const restaurantData = await response.json();
 
-    setListOfResturant(restaurantData);
-    setFilteredRestaurants(restaurantData);
+        setListOfResturant(restaurantData);
+        setFilteredRestaurants(restaurantData);
+      } else {
+        // Handle errors, such as if the response is not OK
+        console.error("Failed to fetch restaurant data");
+      }
+    } catch (error) {
+      // Handle other errors, such as network issues
+      console.error("An error occurred while fetching restaurant data", error);
+    }
   };
 
   useEffect(() => {

@@ -1,0 +1,13 @@
+{
+  "routes": [
+    {
+      "src": "/api/restaurant-proxy",
+      "dest": "/.vercel/functions/restaurant-proxy"
+    }
+  ],
+  "functions": {
+    "api/restaurant-proxy": {
+      "maxDuration": 10
+    }
+  }
+}
