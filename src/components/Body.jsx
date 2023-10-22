@@ -10,14 +10,10 @@ function Body() {
 
   // fetching Swiggy restaurant data
   const fetchData = async () => {
-    const data = await fetch(
-      "dapi/restaurants/list/v5?lat=28.6304203&lng=77.21772159999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
+    const data = await fetch("../../api/restaurant-proxy.js");
+
+    const restaurantData = await data.json();
     //  console.log(json);
-    const restaurantData =
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
 
     setListOfResturant(restaurantData);
     setFilteredRestaurants(restaurantData);
@@ -26,6 +22,14 @@ function Body() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  // Handle search
+  const handleSearch = () => {
+    const filteredRestaurant = listOfResturant?.filter((res) =>
+      res.info?.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredRestaurants(filteredRestaurant);
+  };
 
   return listOfResturant.length === 0 ? (
     <Shimmer />
@@ -40,16 +44,16 @@ function Body() {
             className="outline-none text-base mob:text-xs p-[5px] basis-[250px] mob:basis-[90px] h-[30px] rounded-md ring-1 ring-gray bg-gray-100"
             key="input-text"
             onChange={(e) => setSearchText(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSearch();
+              }
+            }}
           />
           <button
             className=" basis-[40px] mob:basis-[20px] mob:text-xs bg-blue-500 text-white rounded-xl p-1 m-1 w-28 "
             // onClick={searchData(searchText, allRestaurants)}
-            onClick={() => {
-              const filteredRestaurant = listOfResturant?.filter((res) =>
-                res.info?.name.toLowerCase().includes(searchText.toLowerCase())
-              );
-              setFilteredRestaurants(filteredRestaurant);
-            }}
+            onClick={handleSearch}
           >
             Search
           </button>
