@@ -4,19 +4,27 @@ import { logo } from "../assests";
 function Header() {
   const [btnLogin, setBtnLogin] = useState("Login");
   return (
-    <div className="flex justify-between  border border-b-gray-950 bg-gray-800 items-center shadow-lg   p-6">
+    <div className="flex justify-between  items-center shadow-lg   p-6 bg-blue-50 w-full">
       <div>
         <img className="w-48 p-2" src={logo} alt="app logo" />
       </div>
-      <div className="flex gap-4 items-center text-lg text-gray-300 font-medium ">
+      <div className="flex gap-4 items-center">
         <ul className=" flex items-center gap-6  ">
-          <li className=" hover:text-slate-50  ">Home</li>
-          <li className="hover:text-slate-50   ">About us</li>
-          <li className="  hover:text-slate-50 ">Contact Us</li>
-          <li className="  hover:text-slate-50  ">Cart</li>
+          <li className=" hover:bg-gray-600  rounded-xl p-2 hover:text-white ">
+            Home
+          </li>
+          <li className="hover:bg-gray-600  rounded-xl p-2 hover:text-white   ">
+            About us
+          </li>
+          <li className="  hover:bg-gray-600  rounded-xl p-2 hover:text-white ">
+            Contact Us
+          </li>
+          <li className="  hover:bg-gray-600  rounded-xl p-2 hover:text-white  ">
+            Cart
+          </li>
         </ul>
         <button
-          className=" hover:text-slate-50 "
+          className=" hover:bg-gray-600  rounded-xl p-2 hover:text-white "
           onClick={() => {
             btnLogin === "Login" ? setBtnLogin("Logout") : setBtnLogin("Login");
           }}

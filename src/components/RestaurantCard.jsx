@@ -1,5 +1,7 @@
 import { CDN_URL } from "../utils/Constants";
 import { AiFillStar } from "react-icons/ai";
+import { BiTimer } from "react-icons/bi";
+import { FaLocationDot } from "react-icons/fa6";
 
 function RestaurantCard({ resData }) {
   // destructuring
@@ -9,12 +11,12 @@ function RestaurantCard({ resData }) {
     avgRating,
     costForTwo,
     areaName,
-    slaString,
+    sla,
     cloudinaryImageId,
-  } = resData?.data;
+  } = resData?.info;
 
   return (
-    <div className="basis-[250px] mob:basis-[150px] p-2.5 mb-2.5 hover:shadow hover:bg-slate-100 ">
+    <div className="basis-[250px] mob:basis-[150px] p-2.5 mb-2.5 hover:shadow hover:bg-blue-50 bg-slate-50 ">
       <div className="relative w-full ">
         <img
           className="w-full mob:w-[130px]"
@@ -28,15 +30,30 @@ function RestaurantCard({ resData }) {
           {cuisines.join(", ")}
         </p>
 
-        <div className="mt-2 text-gray-details  items-center flex justify-between">
+        <div className="mt-2 text-gray-details items-center flex justify-between">
           <div className="flex mt-2 justify-between items-center text-xs pb-2.5 text-gray-details font-semibold mob:flex-col mob:items-start">
             <span className="flex items-center gap-1 ">
               <AiFillStar /> {avgRating}
             </span>
           </div>
-          <span className="text-xs font-semibold">{slaString}</span>
-          <span className="mx-4 text-sm font-semibold">
-            ₹ {costForTwo / 100}
+
+          <span className="mx-2 text-sm font-normal flex items-center">
+            {costForTwo}
+          </span>
+        </div>
+        <div className="mt-2 text-gray-details items-center flex justify-between">
+          <span className="text-sm flex items-center">
+            <p className=" text-sm ">
+              <FaLocationDot />
+            </p>
+            <p className="mx-0.5">{areaName}</p>
+          </span>
+          <span className=" text-sm  flex items-center mx-2">
+            <p className="font-bold text-lg mx-1">
+              <BiTimer />
+            </p>
+
+            {sla?.slaString}
           </span>
         </div>
       </div>
