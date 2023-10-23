@@ -81,9 +81,11 @@ function Body() {
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-5 justify-center mt-4">
+      <div className="flex flex-wrap justify-center gap-1">
         {filteredRestaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
+          <div className="w-1/5 p-4" key={restaurant?.info?.id}>
+            <RestaurantCard resData={restaurant} />
+          </div>
         ))}
       </div>
     </>

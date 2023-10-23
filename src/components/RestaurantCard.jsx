@@ -16,7 +16,7 @@ function RestaurantCard({ resData }) {
   } = resData?.info;
 
   return (
-    <div className="basis-[250px] mob:basis-[150px] p-2.5 mb-2.5 hover:shadow hover:bg-blue-50 bg-slate-50 ">
+    <div className="basis-[250px] mob:basis-[150px] p-2.5 mb-2.5 hover:shadow hover:bg-white bg-gray-50  ">
       <div className="relative w-full ">
         <img
           className="w-full mob:w-[130px]"
