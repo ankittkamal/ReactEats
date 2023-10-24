@@ -4,6 +4,7 @@ import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { GET_RESTAURANTS_LIST, SWIGGY_RESTAURSNT } from "../utils/Constants";
 import { Link } from "react-router-dom";
+import { BiSearchAlt2 } from "react-icons/bi";
 
 function Body() {
   const [searchText, setSearchText] = useState("");
@@ -59,11 +60,12 @@ function Body() {
             }}
           />
           <button
-            className=" basis-[40px] mob:basis-[20px] mob:text-xs bg-blue-500 text-white rounded-xl p-1 m-1 w-28 "
+            className="  bg-blue-500  text-white rounded-xl p-1 w-24 flex items-center justify-between "
             // onClick={searchData(searchText, allRestaurants)}
             onClick={handleSearch}
           >
-            Search
+            <BiSearchAlt2 />
+            <p className="mx-1">Search</p>
           </button>
         </div>
 
@@ -83,7 +85,7 @@ function Body() {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-2 p-4 w-5/6 ">
+      <div className="grid grid-cols-4 gap-2 p-4 w-5/6 mb-4 ">
         {filteredRestaurants.map((restaurant) => (
           <Link
             key={restaurant?.info?.id}
