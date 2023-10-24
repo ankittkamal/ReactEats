@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import resList from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { SWIGGY_RESTAURSNT } from "../utils/Constants";
+import { GET_RESTAURANTS_LIST, SWIGGY_RESTAURSNT } from "../utils/Constants";
+import { Link } from "react-router-dom";
 
 function Body() {
   const [searchText, setSearchText] = useState("");
@@ -13,13 +14,14 @@ function Body() {
 
   // fetching Swiggy restaurant data
   const fetchData = async () => {
-    const data = await fetch(SWIGGY_RESTAURSNT);
-    const restaurantData = await data.json();
-    console.log(restaurantData);
+    const data = await fetch(GET_RESTAURANTS_LIST);
+    const json = await data.json();
+    // console.log(json);
+    // console.log(restaurantData);
 
-    // const restaurantData =
-    //   json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-    //     ?.restaurants;
+    const restaurantData =
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
 
     setListOfResturant(restaurantData);
     setFilteredRestaurants(restaurantData);
@@ -81,11 +83,14 @@ function Body() {
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-1">
+      <div className="grid grid-cols-4 gap-2 p-4 w-5/6 ">
         {filteredRestaurants.map((restaurant) => (
-          <div className="w-1/5 p-4" key={restaurant?.info?.id}>
+          <Link
+            key={restaurant?.info?.id}
+            to={"/restaurants/" + restaurant?.info?.id}
+          >
             <RestaurantCard resData={restaurant} />
-          </div>
+          </Link>
         ))}
       </div>
     </>
