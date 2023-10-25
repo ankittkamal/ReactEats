@@ -1,8 +1,7 @@
 import clsx from "clsx";
 import { CDN_URL } from "../utils/Constants";
 import { AiFillStar } from "react-icons/ai";
-import { BiTimer } from "react-icons/bi";
-import { FaLocationDot } from "react-icons/fa6";
+import { MdOutlineLocationOn } from "react-icons/md";
 
 function RestaurantCard({ resData }) {
   // destructuring
@@ -10,11 +9,11 @@ function RestaurantCard({ resData }) {
     name,
     cuisines,
     avgRating,
-    costForTwo,
     areaName,
     sla,
     cloudinaryImageId,
     aggregatedDiscountInfoV3,
+    costForTwo,
   } = resData?.info;
 
   return (
@@ -36,7 +35,7 @@ function RestaurantCard({ resData }) {
       <h6 className="text-base font-semibold text-slate-900 tracking-normal mt-1">
         {name}
       </h6>
-      {/**rating */} {/* time */}
+      {/**rating */} {/* time */} {/** costForTwo */}
       <div className=" flex  items-center justify-start gap-2">
         <span className="flex items-center gap-1 ">
           <AiFillStar
@@ -54,21 +53,20 @@ function RestaurantCard({ resData }) {
           <p className=""> • </p>{" "}
           <p className="font-medium">{sla?.slaString}</p>
         </span>
+
+        <p className="text-sm mx-4 font-thin">{costForTwo}</p>
       </div>
       {/* cuisines */}
       <p className=" text-base text-gray-900 font-extralight truncate overflow-hidden w-full    mt-1">
         {cuisines.join(", ")}
       </p>
       {/* location */}
-      <p className="text-base text-gray-900 font-light">{areaName}</p>
+      <span className="flex  items-center ">
+        <MdOutlineLocationOn />
+        <p className="text-base text-gray-900 font-light">{areaName}</p>
+      </span>
     </div>
   );
-}
-
-{
-  /**<span className="mt-1 mx-1 text-sm font-normal flex items-center">
-          {costForTwo}
-        </span> */
 }
 
 export default RestaurantCard;

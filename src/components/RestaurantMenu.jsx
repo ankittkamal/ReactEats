@@ -7,9 +7,9 @@ import useRestaurantMenu from "../hooks/useRestaurantMenu";
 function RestaurantMenu() {
   const { resId } = useParams();
 
-  const resInfo = useRestaurantMenu(resId);
+  const resIdInfo = useRestaurantMenu(resId);
 
-  if (resInfo === null) return <Shimmer />;
+  if (resIdInfo === null) return <Shimmer />;
 
   const {
     name,
@@ -18,14 +18,15 @@ function RestaurantMenu() {
     areaName,
     sla,
     costForTwoMessage,
-  } = resInfo?.cards[0]?.card?.card?.info;
+  } = resIdInfo?.cards[0]?.card?.card?.info;
 
   const { itemCards } =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+    resIdInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+      ?.card;
 
   // console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
   const cardCategories =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    resIdInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.["card"]?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"

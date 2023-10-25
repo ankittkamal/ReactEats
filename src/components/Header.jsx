@@ -8,7 +8,7 @@ import { CgPokemon } from "react-icons/cg";
 import { BsCartPlus } from "react-icons/bs";
 
 function Header() {
-  const [btnLogin, setBtnLogin] = useState("Login");
+  const [btnLogin, setBtnLogin] = useState("Sign In");
   return (
     <div className="flex justify-between  items-center shadow-lg   p-5 bg-blue-50 w-full">
       <div>
@@ -23,37 +23,37 @@ function Header() {
       <div className="flex gap-4 items-center  ">
         <ul className=" flex items-center  gap-12 mx-20  ">
           <Link to="/">
-            <li className="  flex items-center justify-between gap-2  rounded-xl p-2 hover:text-blue-500 cursor-pointer transform transition-transform hover:scale-110">
-              <GoHome className="hover:text-white" />
+            <li className="  flex items-center justify-between gap-1  rounded-xl p-2 hover:text-blue-500 cursor-pointer transform transition-transform hover:scale-110 font-medium ">
+              <GoHome className="text-xl " />
               <p>Home</p>
             </li>
           </Link>
           <Link to="/about">
-            <li className="hover:text-blue-500 flex items-center justify-between gap-2  rounded-xl p-2   cursor-pointer transform transition-transform hover:scale-110 ">
-              <CgPokemon />
+            <li className="hover:text-blue-500 flex items-center justify-between gap-2  rounded-xl p-2   cursor-pointer transform transition-transform hover:scale-110 font-medium  ">
+              <CgPokemon className="text-xl" />
               <p>About us</p>
             </li>
           </Link>
           <Link to="/contact">
-            <li className="  hover:text-blue-500 flex items-center justify-between gap-2 rounded-xl p-2  cursor-pointer transform transition-transform hover:scale-110">
-              <PiContactlessPaymentBold />
+            <li className="  hover:text-blue-500 flex items-center justify-between gap-2 rounded-xl p-2  cursor-pointer transform transition-transform hover:scale-110 font-medium ">
+              <PiContactlessPaymentBold className="text-xl" />
               <p>Contact</p>
             </li>
           </Link>
           <button
-            className=" hover:text-blue-500 flex items-center justify-between gap-2  rounded-xl p-2  cursor-pointer transform transition-transform hover:scale-110 "
+            className=" hover:text-blue-500 flex items-center justify-between gap-1  rounded-xl p-2  cursor-pointer transform transition-transform hover:scale-110 font-medium "
             onClick={() => {
-              btnLogin === "Login"
-                ? setBtnLogin("Logout")
-                : setBtnLogin("Login");
+              btnLogin === "Sign In"
+                ? setBtnLogin("Sign Out")
+                : setBtnLogin("Sign In");
             }}
           >
-            <BsPerson />
+            <BsPerson className="text-2xl" />
             {btnLogin}
           </button>
           <Link to="/cart">
-            <li className=" transform transition-transform hover:scale-110  hover:text-blue-500 flex items-center justify-between gap-2  rounded-xl p-2  cursor-pointer ">
-              <BsCartPlus />
+            <li className=" transform transition-transform hover:scale-110  hover:text-blue-500 flex items-center justify-between gap-2  rounded-xl p-2  cursor-pointer font-medium ">
+              <BsCartPlus className="text-xl" />
               <p>Cart</p>
             </li>
           </Link>
