@@ -23,7 +23,10 @@ function ItemList({ items }) {
               {item?.card?.info?.name}
             </span>
             <span className="text-sm font-medium ">
-              ₹{item?.card?.info?.price / 100}
+              ₹
+              {item.card.info.price
+                ? item.card.info.price / 100
+                : item.card.info.defaultPrice / 100}
             </span>
             <span className="text-xs mt-2 font-extralight">
               {item?.card?.info?.description}
