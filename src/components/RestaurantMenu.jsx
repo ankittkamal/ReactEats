@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CDN_URL, GET_RESTAURANT_MENU } from "../utils/Constants";
-import Shimmer from "./Shimmer";
+import { MenuShimmer } from "./Shimmer";
 import useRestaurantMenu from "../hooks/useRestaurantMenu";
 import { RxDividerHorizontal } from "react-icons/rx";
 import { AiFillStar } from "react-icons/ai";
@@ -10,11 +9,14 @@ import { HiOutlineCurrencyRupee } from "react-icons/hi2";
 import RestaurantCategory from "./RestaurantCategory";
 
 function RestaurantMenu() {
-  const { resId } = useParams();
+  const { resId } = useParams(); /* Read dynamic URL params */
 
-  const resIdInfo = useRestaurantMenu(resId);
+  const resIdInfo =
+    useRestaurantMenu(
+      resId
+    ); /* Passing resId to Custom Hooks to fetch restaurant details and returns it */
 
-  if (resIdInfo === null) return <Shimmer />;
+  if (resIdInfo === null) return <MenuShimmer />;
 
   const {
     name,
@@ -26,11 +28,12 @@ function RestaurantMenu() {
     costForTwoMessage,
   } = resIdInfo?.cards[0]?.card?.card?.info;
 
-  const { itemCards } =
-    resIdInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-      ?.card;
+  // const { itemCards } =
+  //   resIdInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+  //     ?.card;
 
   // console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
+
   const cardCategories =
     resIdInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
@@ -96,7 +99,7 @@ function RestaurantMenu() {
   );
 }
 
-function DividerFor() {
+export const DividerFor = () => {
   // Create an array to hold the components
   const dividers = [];
 
@@ -106,6 +109,6 @@ function DividerFor() {
   }
 
   return <span className="flex">{dividers}</span>;
-}
+};
 
 export default RestaurantMenu;
