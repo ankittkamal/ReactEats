@@ -18,7 +18,7 @@ function Body() {
 
   // fetching Swiggy restaurant data
   const fetchData = async () => {
-    const data = await fetch(GET_RESTAURANTS_LIST);
+    const data = await fetch(SWIGGY_RESTAURSNT);
     const json = await data.json();
     // console.log(json);
     // console.log(restaurantData);

@@ -8,4 +8,7 @@ export const GET_RESTAURANT_MENU =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6304203&lng=77.21772159999999&restaurantId=";
 
 export const SWIGGY_RESTAURSNT =
-  "https://restaurant-backend-one.vercel.app/restaurant";
+  "https://react-eats-backend.vercel.app/api/restaurants";
+
+export const SWIGGY_RESTAURSNT_MENU =
+  "https://react-eats-backend.vercel.app/api/restaurants/";
