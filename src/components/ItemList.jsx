@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import React from "react";
 import { BsTriangleFill } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
@@ -6,7 +5,7 @@ import { CDN_URL } from "../utils/Constants";
 
 function ItemList({ items }) {
   //const { description } = items?.card?.info;
-  console.log(items);
+  //  console.log(items);
 
   return (
     <div>
@@ -25,8 +24,8 @@ function ItemList({ items }) {
             <span className="text-sm font-medium ">
               ₹
               {item.card.info.price
-                ? item.card.info.price / 100
-                : item.card.info.defaultPrice / 100}
+                ? Math.round(item.card.info.price / 100)
+                : Math.round(item.card.info.defaultPrice / 100)}
             </span>
             <span className="text-xs mt-2 font-extralight">
               {item?.card?.info?.description}

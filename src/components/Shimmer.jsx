@@ -106,6 +106,24 @@ export const MenuShimmer = () => {
               </div>
             </div>
             <div className="h4  border-b-8 divide-solid outline-none mb-6 mt-8 "></div>
+            <div className="border-gray-200 border-b-2 flex justify-between">
+              <div className="flex flex-col w-9/12">
+                <span className="mt-4"></span>
+                <span className="text-base font-semibold bg-bio "></span>
+                <span className="text-sm font-medium bg-bio ">₹</span>
+                <span className="text-xs mt-2 font-extralight bg-bio"></span>
+              </div>
+              <div className="  w-3/12 ">
+                <button className=" absolute opacity-95 border border-gray-400 w-24 text-green-600 p-1 rounded-md mx-12 mt-24 bg-white">
+                  ADD
+                </button>
+                <img
+                  alt=""
+                  className="w-36 mt-6  rounded-md mb-12 h-auto ml-6 bg-bio"
+                />
+              </div>
+            </div>
+            <div className="h4  border-b-8 divide-solid outline-none mb-6 mt-8 "></div>
           </div>
         </div>
       </div>
