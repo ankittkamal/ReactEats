@@ -5,16 +5,20 @@ import Header from "./components/Header";
 import About from "./components/About";
 import ContactUs from "./components/ContactUs";
 import Error from "./components/Error";
-import Cart from "./components/Cart";
 import RestaurantMenu from "./components/RestaurantMenu";
+import { Provider } from "react-redux";
+import appStore from "./store";
+import Cart from "./components/cart/Cart";
 
 function AppLayout() {
   return (
-    <div className="flex flex-col items-center h-screen justify-between">
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <Provider store={appStore}>
+      <div className="flex flex-col items-center h-screen justify-between">
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </Provider>
   );
 }
 

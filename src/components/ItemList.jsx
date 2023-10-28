@@ -2,10 +2,19 @@ import React from "react";
 import { BsTriangleFill } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
 import { CDN_URL } from "../utils/Constants";
+import { useDispatch } from "react-redux";
+import { addItems } from "./cart/cartSlice";
 
 function ItemList({ items }) {
   //const { description } = items?.card?.info;
   //  console.log(items);
+
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    // Dispatch an action
+    dispatch(addItems(item));
+  };
 
   return (
     <div>
@@ -32,7 +41,12 @@ function ItemList({ items }) {
             </span>
           </div>
           <div className="  w-3/12 ">
-            <button className=" absolute opacity-95 border border-gray-400 w-24 bg-white text-green-600 p-1 rounded-md mx-12 mt-24">
+            <button
+              className=" absolute opacity-95 border border-gray-400 w-24 bg-white text-green-600 p-1 rounded-md mx-12 mt-24"
+              onClick={() => {
+                handleAddItem(item);
+              }}
+            >
               ADD
             </button>
             <img
